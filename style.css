@@ -1,0 +1,212 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+.level {
+	position: absolute; 
+	left: 300px; 
+	top:250px;
+	margin-left:-20px;
+}
+
+.level text {
+	color:white;
+	position:absolute;
+	margin-top:-10px;
+	margin-left:5px;
+	text-shadow: 1px 1px 2px black;
+}
+
+.level img {
+	margin-top: 10px;
+}
+
+input[type=radio] {display: none;}
+
+input[type=radio] + label:before {
+    content: "\26AB";
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 20px;    
+    line-height: 20px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0;    
+    transition: font-size ease .3s;
+	 background-color: #b4e1f8;
+}
+input[type=radio]:checked + label:before {
+    font-size: 20px;    
+}
+
+label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:4px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:4px solid #33ccff;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+.calibrate {
+	width:35px;
+	height:540px;
+	border: 5px solid #33ccff;
+	position: absolute; 
+	left: 87px; 
+	top: 95px;
+	padding: 15px;
+	border-radius: 30px;
+}
+
+.power {
+	width:220px;
+	height:10px;
+	position: absolute; 
+	left: 0px; 
+	top:670px;
+	padding: 15px;
+	border-radius: 30px;
+}
+
+.power p {
+	color:white;
+	font-size:18px;
+	text-shadow: 1px 1px 2px black;
+	margin-left:0px;
+}
+
+.power p b{
+	font-size:20px;
+}
+
+.file-upload {
+     position: absolute; /* Даем возможность делать позиционирование, внутри данного элемента */
+	  top:500px;
+	  left:650px;
+     overflow: hidden; /* Все что выходит за пределы - скрываем */
+     width: 20%; /* Задаем ширину кнопки выбора файла */
+     height: 20px; /* Задаем высоту кнопки выбора файла */
+     background: #6da047;
+     border-radius: 3px;
+     padding: 8px 4px;
+     color: #fff;
+     text-align: center;
+}
+.file-upload:hover {
+     background: #7aad55;
+}
+.file-upload input[type="file"]{
+    display: none; /* Обязательно скрываем настоящий Input File */
+}
+.file-upload label {
+     /* Растягиваем label на всю возможную площадь блока .file-upload */
+     display: block;
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     cursor: pointer;
+	  font-size:20px;
+}
+.file-upload span {
+     line-height: 36px; /* Делаем вертикальное выравнивание текста, который написан на кнопке */
+}

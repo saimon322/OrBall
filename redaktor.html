@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	<title>Редактор уровней</title>
+	<link rel="icon" type="image/ico" href="img/micro.ico" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<canvas id="canvas" width="1600" height="765,9"></canvas>
+		
+	<script src="settings.js"></script>
+	<script src="js/redaktor.js"></script>
+	
+	<div class="file-upload">
+     <label>
+          <input type="file" name="file" id="file">
+          <span>Выберите файл с настройками</span>
+     </label>
+	</div>
+	<img id="button" src="img/refresh.png" style = "position: absolute; top:600px; left:600px; width:433px; height:70px; cursor: pointer">
+	
+	<script>
+    button.onclick = function() {
+		var formData = new FormData();
+		formData.append("myFile", document.getElementById("file").files[0]);
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "index.php");
+		xhr.send(formData);
+    }
+  </script>
+</body>
+</html>

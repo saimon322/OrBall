@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	<title>Вы орете великолепно!</title>
+	<link rel="icon" type="image/ico" href="img/micro.ico" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<canvas id="canvas" width="1600" height="765,9"></canvas>
+	<img id="bal" src="img/ball.png" style = "position: absolute; top:570px; left:775px; width:75px; height:75px; opacity: 0;">
+		
+	<script src="settings.js"></script>
+	<script src="js/game.js"></script>
+	<script>
+		calibrate();
+	</script>
+	<div>
+		<form class="calibrate" id="Calibrate"></form>
+		<form class="power" id="Power">
+			<input type="range" id="r1" oninput="fun1()">
+			<p>Мощность микрофона (<b id="one">50</b>)</p>
+		</form>
+	</div>
+	<script>
+		function fun1() {
+			 var rng=document.getElementById('r1'); //rng - это Input
+			 var p=document.getElementById('one'); // p - абзац
+			 p.innerHTML = rng.value;
+			 microValue = rng.value/5;
+		}
+	</script>
+	
+	<script>
+		var div = document.createElement('div');
+		var imgCount = 4;//1-4, 5-8, 9-10, 11-12, 13-21, 22-24, 25-36, 37-40
+		if (imgCount <= 8) {imgSize=250; formWidth=1105; textSize=19; }
+		else if (imgCount >= 9 && imgCount <= 10) {imgSize=200; formWidth=1133; textSize=16;}
+		else if (imgCount >= 11 && imgCount <= 12) {imgSize=190; formWidth=1300; textSize=16;}
+		else if (imgCount >= 13 && imgCount <= 21) {imgSize=160; formWidth=1305; textSize=14;}
+		else if (imgCount >= 22 && imgCount <= 24) {imgSize=135; formWidth=1295; textSize=13;}
+		else if (imgCount >= 25 && imgCount <= 36) {imgSize=110; formWidth=1300; textSize=0;}
+		else if (imgCount >= 37 && imgCount <= 40) {imgSize=100; formWidth=1300; textSize=0;}
+		else {imgSize=55; formWidth=1200; textSize=0;}
+		var form = '<form name="Level" class="level" id="formLevel" style="width:'+formWidth+'px">';		
+		for (var i = 0; i < imgCount; i++) {
+			var levelName = i < names.length ? names[i] : 'В разработке';
+			var imgName = i < names.length ? levelName : 'no_cover';
+			var leftIndent = 147+i*270-levelName.length*4.5;
+			var condition = i < names.length ? "" : "disabled";
+			form += '\
+				<label class="game">\
+					<text style="font-size:'+textSize+'px">'+levelName+'</text>\
+					<input type="radio" name="fb" value="123"></input>\
+					<img src="img/cover/'+imgName+'.png" width='+imgSize+'px height='+imgSize+'px style="margin-bottom:15px; margin-right:15px; ">\
+				</label>\
+			';
+		}
+		form += '<img id="button" src="img/play.png" style = "position: absolute; top:365px; left:320px; width:433px; height:70px">'
+		form += '</form>';
+		div.innerHTML = form;
+		document.body.appendChild(div);
+	</script>
+	
+	<script>
+    button.onclick = function() {
+		init();
+		firstdraw1();
+		gameStart = true;
+		button.parentNode.removeChild(button);
+		formLevel.parentNode.removeChild(formLevel);
+		Calibrate.parentNode.removeChild(Calibrate);
+		Power.parentNode.removeChild(Power);
+		var start;
+		var timer;
+      start = Date.now(); // сохранить время начала
+      timer = setInterval(function() {
+        var timePassed = Date.now() - start;
+		  bal.style.opacity = timePassed/385;
+        bal.style.top = 560 + timePassed / 3 + 'px';
+        if (timePassed > 385) {	
+				clearInterval(timer);
+				start1 = Date.now(); // сохранить время начала
+				timer1 = setInterval(function() {
+				var timePassed = Date.now() - start1;
+				bal.style.left = 775 - timePassed / 3 + 'px';
+				if (timePassed > 1425) {
+					clearInterval(timer1);
+					bal.style.opacity = 0;
+					startGame();
+				}
+				});
+			 }
+      });
+    }
+  </script>
+</body>
+</html>
